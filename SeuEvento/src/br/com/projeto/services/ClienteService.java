@@ -65,7 +65,7 @@ public class ClienteService {
 	
 	public  List<Cliente> buscarFiltroNomeFantasia(Cliente filtro) {
 		List<Cliente> cliente = new ArrayList<Cliente>();
-		cliente = clienteDAO.buscar(filtro.getNomeFantasia());
+		cliente = clienteDAO.buscar(filtro.getNome());
 
 		return cliente;
 	}

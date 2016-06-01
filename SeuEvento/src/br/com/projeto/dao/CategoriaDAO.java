@@ -28,7 +28,7 @@ public class CategoriaDAO extends GenericDAO<Categoria>{
 	public List<Categoria> getByName(Categoria filtro) {
 		String str = "select c from Categoria c where upper(c.descricao) like upper(:descricao)";
 		Query query=manager.createQuery(str);
-		query.setParameter("descricao", "%"+filtro.getDescricao()+"%");
+		query.setParameter("descricao", "%"+filtro.getNome()+"%");
 		return query.getResultList();
 	}
 }

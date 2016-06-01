@@ -2,16 +2,16 @@ package br.com.projeto.dao;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.projeto.model.ClienteServico;
+import br.com.projeto.model.EventoServico;
 
 @Repository
-public class ClienteServicoDAO extends GenericDAO<ClienteServico>{
+public class ClienteServicoDAO extends GenericDAO<EventoServico>{
 	
 
 
 	@Override
-	public Class<ClienteServico> getClassType() {
-		return ClienteServico.class;
+	public Class<EventoServico> getClassType() {
+		return EventoServico.class;
 	}
 
 }

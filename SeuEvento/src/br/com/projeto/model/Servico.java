@@ -1,34 +1,37 @@
 package br.com.projeto.model;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Servico implements EntityClass{
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	private String descricao;
-	private double valor;
-	private List<String> imagens;
-	private int experiencia;
-	
-	@ManyToMany
-	@JoinColumn(name="clientes_id")
-	private List<Cliente> clientes; 
-	
+
+	private ArrayList<String> images;
+
+	private ArrayList<String> estados;
+
+	private Vendedor vendedor;
+
+	@OneToMany
+	private List<EventoServico> eventoServico;
+
 	@ManyToOne
-	@JoinColumn(name="categoria_id")
 	private Categoria categoria;
 	
+	
+	
+
 	public Long getId() {
 		return id;
 	}
@@ -45,36 +48,46 @@ public class Servico implements EntityClass{
 		this.descricao = descricao;
 	}
 
-	public double getValor() {
-		return valor;
+	public ArrayList<String> getImages() {
+		return images;
 	}
 
-	public void setValor(double valor) {
-		this.valor = valor;
+	public void setImages(ArrayList<String> images) {
+		this.images = images;
 	}
 
-	public List<String> getImagens() {
-		return imagens;
+	public ArrayList<String> getEstados() {
+		return estados;
 	}
 
-	public void setImagens(List<String> imagens) {
-		this.imagens = imagens;
+	public void setEstados(ArrayList<String> estados) {
+		this.estados = estados;
 	}
 
-	public List<Cliente> getClientes() {
-		return clientes;
+	public Vendedor getVendedor() {
+		return vendedor;
 	}
 
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
 	}
 
-	public int getExperiencia() {
-		return experiencia;
+	public List<EventoServico> getEventoServico() {
+		return eventoServico;
 	}
 
-	public void setExperiencia(int experiencia) {
-		this.experiencia = experiencia;
+	public void setEventoServico(List<EventoServico> eventoServico) {
+		this.eventoServico = eventoServico;
 	}
 
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	
+	
 }

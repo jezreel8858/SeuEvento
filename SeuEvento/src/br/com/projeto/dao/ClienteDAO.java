@@ -19,7 +19,7 @@ public class ClienteDAO extends GenericDAO<Cliente>{
 	public boolean exist(Cliente usuario){
 		Query result = null;
 		result = this.manager.createQuery("SELECT COUNT(c) FROM Cliente c WHERE c.login.login = :login");
-		result.setParameter("login", usuario.getLogin().getLogin());
+		result.setParameter("login", usuario.getLogin().getUsername());
 		
 		return ((long) result.getSingleResult()) != 0;
 	}
@@ -27,8 +27,8 @@ public class ClienteDAO extends GenericDAO<Cliente>{
 	@SuppressWarnings("unchecked")
 	public Cliente procurarLoginSenha(Login login){
 			Query query = manager.createQuery("SELECT c FROM Cliente c WHERE c.login.login = :login and c.login.senha = :senha ");
-			query.setParameter("login",login.getLogin());
-			query.setParameter("senha",login.getSenha());
+			query.setParameter("login",login.getUsername());
+			query.setParameter("senha",login.getPassword());
 			
 			List<Cliente> usuarios =  query.getResultList();
 			

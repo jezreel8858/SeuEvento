@@ -39,16 +39,12 @@ public class LoginController {
 		usuarioBD = usuarioService.procurarPorLoginSenha(login);
 
 		if(usuarioBD == null){
-			login.setSenha("");
+			login.setPassword("");
 			map.addAttribute("msg", "Nome de usuário ou senha errados. Por favor tente outra vez.");
 			return  "login";
 		}
 //		Temporario, mudar pra tabela de permissões no futuro
-		if(usuarioBD.getTipo().equals("Empresa")){
-			sessao.setAttribute("home", "empresa");
-		} else if (usuarioBD.getTipo().equals("Cliente")) {
-			sessao.setAttribute("home", "cliente");
-		}
+		sessao.setAttribute("home", usuarioBD.getTipo());
 //		Fim
 		sessao.setAttribute("usuario", usuarioBD);
 		return "redirect:/home";

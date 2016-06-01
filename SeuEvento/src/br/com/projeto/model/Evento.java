@@ -5,18 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Categoria implements EntityClass{
+public class Evento implements EntityClass{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	private String nome;
+	
+	@ManyToOne
+	private Cliente cliente;
 
 	@OneToMany
-	private List<Servico> servico;
+	private List<EventoServico> eventoServico;
 
 	
 	
@@ -28,22 +30,22 @@ public class Categoria implements EntityClass{
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
-	public List<Servico> getServico() {
-		return servico;
+	public List<EventoServico> getEventoServico() {
+		return eventoServico;
 	}
 
-	public void setServico(List<Servico> servico) {
-		this.servico = servico;
+	public void setEventoServico(List<EventoServico> eventoServico) {
+		this.eventoServico = eventoServico;
 	}
+
 	
 	
-
 }
